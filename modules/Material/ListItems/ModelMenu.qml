@@ -20,10 +20,10 @@ import Material 0.1
 import Material.Extras 0.1
 
 /*!
-   \qmltype SimpleMenu
+   \qmltype ModelMenu
    \inqmlmodule Material.ListItems 0.1
 
-   \brief A list item that opens a dropdown menu when tapped.
+   \brief A list item that opens a dropdown menu when tapped. Supports ListModel, array of objects, array of strings, role names.
  */
 Subtitled {
     id: listItem
@@ -83,7 +83,6 @@ Subtitled {
         anchor: Item.TopLeft
 
         width: Math.max(Units.dp(56 * 2), Math.min(listItem.width - Units.dp(32), __maxWidth))
-//        height: Math.min(10 * Units.dp(48) + Units.dp(16), (model.length || model.count) * Units.dp(48) + Units.dp(16))
         height: listView.height + Units.dp(16)
 
         Rectangle {
@@ -141,9 +140,6 @@ Subtitled {
                         else if (model[disabledRole]) return model[disabledRole] !== true;
                         else return true;
                     }
-
-    //                text: __isStringModel ? modelData || '' : (modelData ? modelData[textRole] : model[textRole]) || ''
-    //                enabled: __isStringModel ? true : (modelData ? modelData[disabledRole] : modeldisabledRole) !== true
 
                     onClicked: {
                         listView.currentIndex = index
